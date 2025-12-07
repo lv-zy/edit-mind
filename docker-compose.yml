@@ -21,6 +21,7 @@ services:
       - ${HOST_MEDIA_PATH:-./media}:/media/videos:ro
       - whisper-models:/app/models:rw
       - yolo-models:/app/models/yolo:rw  
+      - edit-mind-data:/app/data
 
   web:
     image: ghcr.io/iliashad/edit-mind-web:${VERSION:-latest}
@@ -41,6 +42,7 @@ services:
       - .env.system
     volumes:
       - ${HOST_MEDIA_PATH:-./media}:/media/videos:ro
+      - edit-mind-data:/app/data
     networks:
       - app-network
 
@@ -110,6 +112,7 @@ volumes:
     driver: local
   chroma-data:
     driver: local
-
+  edit-mind-data:
+    driver: local
 networks:
   app-network:

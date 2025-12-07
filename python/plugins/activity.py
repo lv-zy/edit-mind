@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Optional
 from collections import Counter
 import numpy as np
 from plugins.base import AnalyzerPlugin, FrameAnalysis, PluginResult
@@ -23,7 +23,9 @@ class ActivityPlugin(AnalyzerPlugin):
         self.captions: List[str] = []
         self.frame_objects: List[str] = []
         self.activities: List[Activity] = []
-
+        self.processor: Optional[BlipProcessor] = None
+        self.model: Optional[BlipForConditionalGeneration] = None
+        
     def setup(self):
         self.processor = BlipProcessor.from_pretrained(
             "Salesforce/blip-image-captioning-base"
