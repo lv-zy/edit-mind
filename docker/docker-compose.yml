@@ -108,18 +108,5 @@ services:
       timeout: 5s
       retries: 5
 
-volumes:
-  pgdata_edit_mind:
-    driver: local
-  redis_data:
-    driver: local
-  whisper-models:
-    driver: local
-  yolo-models:
-    driver: local
-  chroma-data:
-    driver: local
-  edit-mind-data:
-    driver: local
 networks:
   app-network:
